@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade Games</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        
+        body {
+            background-color: #090925;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(41, 52, 143, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(143, 41, 123, 0.2) 0%, transparent 20%);
+        }
+        
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #ffffff;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            100% { opacity: 1; }
+        }
+        
+        .welcome-container {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(20, 20, 50, 0.7);
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(100, 100, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 100, 255, 0.2);
+            max-width: 800px;
+            width: 90%;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(106, 17, 203, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .game-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 1rem 2.5rem;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(106, 17, 203, 0.5);
+            width: 250px;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(106, 17, 203, 0.8);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .btn {
+                width: 200px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="welcome-container">
+        <h1>Welcome to the Game!</h1>
+        <p class="subtitle">Choose your adventure</p>
+        
+        <div class="game-buttons">
+            <a href="#" class="btn" id="whackamole-btn">Whack-a-Mole Game</a>
+            <a href="#" class="btn" id="typefast-btn">TypeFast Game</a>
+        </div>
+    </div>
+
+    <script>
+        // Create stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            // Random size between 1 and 3px
+            const size = Math.random() * 2 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            
+            // Random position
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            
+            // Random animation duration
+            star.style.animationDuration = `${Math.random() * 2 + 1}s`;
+            
+            starsContainer.appendChild(star);
+        }
+        
+        // Button functionality would be added here
+        document.getElementById('whackamole-btn').addEventListener('click', () => {
+            alert('Whack-a-Mole game would start here!');
+             window.location.href = 'whackamole.html';
+        });
+        
+        document.getElementById('typefast-btn').addEventListener('click', () => {
+            alert('TypeFast game would start here!');
+             window.location.href = 'typegame.html';
+        });
+    </script>
+</body>
+</html>
